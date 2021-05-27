@@ -1,5 +1,5 @@
 {
-  "name": "admipro2",
+  "name": "adminpro",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,7 +19,10 @@
     "@angular/platform-browser": "~11.2.9",
     "@angular/platform-browser-dynamic": "~11.2.9",
     "@angular/router": "~11.2.9",
+    "chart.js": "^2.9.4",
+    "ng2-charts": "^2.3.0",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.0.11",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

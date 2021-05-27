@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+.fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+#themecolors.selector .cursor {
+    cursor: nw-resize;
+}
+
+#googleCenter {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.actulizar {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.oculto {
+    display: none;
+}

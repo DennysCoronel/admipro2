@@ -1,0 +1,137 @@
+<!-- <div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Usuario..">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"> </i>
+            <p class="mb-0"></p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Responsive Table </h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre de Usuario</th>
+                                <th>Correo</th>
+                                <th>Nombres</th>
+                                <th>Apellido</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Herman Beck</td>
+                                <td>Herman Beck</td>
+                                <td>Herman Beck</td>
+                                <td>Herman Beck</td>
+                                <td>
+                                    <div class="label label-table label-success">Paid</div>
+                                </td>
+                                <td class="text-nowrap">
+                                    <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-secondary">Siguiente </button> &nbsp;
+                <button class="btn btn-secondary">Anterior </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Usuario.." (keyup)="busqueda(txttermino.value)" #txttermino>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="row animate fadeIn fast">
+    <div class="col-12">
+
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"> </i>
+            <p class="mb-0"></p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row animate fadeIn fast" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total Usuarios ({{ totalUsuario}})</h4>
+                <h4 class="card-subtitle">Responsive Table </h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre de Usuario</th>
+                                <th>Correo</th>
+                                <th>Nombres</th>
+                                <th>Apellido</th>
+                                <th>Estatus</th>
+                                <th>Creado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td>{{usuario.nombreUsuario}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td>{{usuario.nombres}}</td>
+                                <td>{{usuario.apellidos}}</td>
+                                <td>
+                                    <div *ngIf="estado(usuario.estado)" class="label label-table label-success">{{usuario.estado}}</div>
+                                    <div *ngIf="!estado(usuario.estado)" class="label label-table label-danger">{{usuario.estado}}</div>
+                                </td>
+                                <td>
+                                    <div *ngIf="usuario.google" class="label label-table label-themecolor">Google</div>
+                                    <div *ngIf="!usuario.google" class="label label-table label-inverse">Email</div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a (click)="mostrarModal(usuario)" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a (click)="cambioEstado(usuario)" *ngIf="!estado(usuario.estado)" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-power-off label label-table label-danger text-inverse m-r-10"></i> </a>
+                                    <a (click)="cambioEstado(usuario)" *ngIf="estado(usuario.estado)" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-power-off label label-table label-success text-inverse m-r-10"></i> </a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="botonActive(txttermino.value)">
+                    <button (click)=" cambiarPag(-5) " class="btn btn-secondary waves-effect waves-light " type="button "><span class="btn-label "><i class="mdi mdi-skip-backward "></i></span>Anterior</button> &nbsp;
+                    <button (click)="cambiarPag(+5) " class="btn btn-secondary waves-effect waves-light " type="button "><span class="btn-label "><i class="mdi mdi-skip-forward "></i></span>Siguiente</button>
+                </div>
+
+            </div>
+        </div>
+        </ div>
+    </div>

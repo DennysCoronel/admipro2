@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">Datos Personales</h4>
+            </div>
+            <div class="card-body">
+                <form action="#" [formGroup]="perfilUsuario" (submit)="actulizarPerfil()">
+                    <div class=" form-body ">
+                        <hr>
+                        <div class="row p-t-20 ">
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="control-label ">Nombre de Usuario</label>
+                                    <input placeholder="nombreUsuario" formControlName="nombreUsuario" type=" text " class="form-control" required>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="control-label ">Email</label>
+                                    <input type="email " formControlName="email" required class="form-control" [readOnly]="usuario.google" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group ">
+                                    <label class="control-label ">Nombres</label>
+                                    <input type="text " formControlName="nombres" class="form-control" placeholder="Nombres">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label class="control-label ">Apellidos</label>
+                                    <input type="text" formControlName="apellidos" class="form-control" placeholder="Apellidos" required>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" [disabled]="perfilUsuario.invalid" class=" btn btn-success waves-effect waves-light m-r-10 ">Submit</button>
+                        <button class="btn btn-inverse waves-effect waves-light ">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">Imagen</h4>
+            </div>
+
+            <div class="card-body">
+                <hr>
+                <div class="text-center">
+                    <img *ngIf="!imgTemp" [src]="usuario.imagenURl" width="100" height="100" class="img-circle ">
+                    <img class="img-circle" *ngIf="imgTemp" [src]="imgTemp" width="100" height="100">
+                    <br>
+                    <br>
+                    <input accept="image/*" type="file" (change)="cambiarImagen($event)"> <br>
+                    <br>
+                    <button type="button" class="btn btn-success  waves-effect waves-light m-r-10" [disabled]="!imagenSubir" (click)="subirImagen()">
+                  <i class="fa fa-save"></i>
+                  Cambiar imagen
+              </button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
